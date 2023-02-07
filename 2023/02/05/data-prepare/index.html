@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Data Prepartion - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="1. Gather data from API12import requestsimport pandas as pd Using the amazon price api from rapidapi.com   1url &amp;#x3D; &amp;quot;https:&amp;#x2F;&amp;#x2F;amazon-price1.p.rapidapi.com&amp;#x2F;search&amp;quot; Here, I am querying a bottom b"><meta property="og:type" content="blog"><meta property="og:title" content="Data Prepartion"><meta property="og:url" content="http://example.com/2023/02/05/data-prepare/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="1. Gather data from API12import requestsimport pandas as pd Using the amazon price api from rapidapi.com   1url &amp;#x3D; &amp;quot;https:&amp;#x2F;&amp;#x2F;amazon-price1.p.rapidapi.com&amp;#x2F;search&amp;quot; Here, I am querying a bottom b"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2023-02-06T04:50:00.000Z"><meta property="article:modified_time" content="2023-02-06T05:33:43.594Z"><meta property="article:author" content="Bofan Zheng"><meta property="article:tag" content="dataprep"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2023/02/05/data-prepare/"},"headline":"Data Prepartion","image":["http://example.com/img/og_image.png"],"datePublished":"2023-02-06T04:50:00.000Z","dateModified":"2023-02-06T05:33:43.594Z","author":{"@type":"Person","name":"Bofan Zheng"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"1. Gather data from API12import requestsimport pandas as pd Using the amazon price api from rapidapi.com   1url &#x3D; &quot;https:&#x2F;&#x2F;amazon-price1.p.rapidapi.com&#x2F;search&quot; Here, I am querying a bottom b"}</script><link rel="canonical" href="http://example.com/2023/02/05/data-prepare/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Data Prepartion - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="1. Gather data from API12import requestsimport pandas as pd Using the amazon price api from rapidapi.com   1url &amp;#x3D; &amp;quot;https:&amp;#x2F;&amp;#x2F;amazon-price1.p.rapidapi.com&amp;#x2F;search&amp;quot; Here, I am querying a bottom b"><meta property="og:type" content="blog"><meta property="og:title" content="Data Prepartion"><meta property="og:url" content="http://example.com/2023/02/05/data-prepare/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="1. Gather data from API12import requestsimport pandas as pd Using the amazon price api from rapidapi.com   1url &amp;#x3D; &amp;quot;https:&amp;#x2F;&amp;#x2F;amazon-price1.p.rapidapi.com&amp;#x2F;search&amp;quot; Here, I am querying a bottom b"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_28_0.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_47_1.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_50_0.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_55_0.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_58_0.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_60_0.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_68_1.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_71_1.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_72_1.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_73_1.png"><meta property="og:image" content="http://example.com/2023/02/05/data-prepare/output_73_1.png"><meta property="article:published_time" content="2023-02-06T04:50:00.000Z"><meta property="article:modified_time" content="2023-02-07T06:25:22.438Z"><meta property="article:author" content="Bofan Zheng"><meta property="article:tag" content="dataprep"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/2023/02/05/data-prepare/output_28_0.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2023/02/05/data-prepare/"},"headline":"Data Prepartion","image":["http://example.com/2023/02/05/data-prepare/output_28_0.png","http://example.com/2023/02/05/data-prepare/output_47_1.png","http://example.com/2023/02/05/data-prepare/output_50_0.png","http://example.com/2023/02/05/data-prepare/output_55_0.png","http://example.com/2023/02/05/data-prepare/output_58_0.png","http://example.com/2023/02/05/data-prepare/output_60_0.png","http://example.com/2023/02/05/data-prepare/output_68_1.png","http://example.com/2023/02/05/data-prepare/output_71_1.png","http://example.com/2023/02/05/data-prepare/output_72_1.png","http://example.com/2023/02/05/data-prepare/output_73_1.png","http://example.com/2023/02/05/data-prepare/output_73_1.png"],"datePublished":"2023-02-06T04:50:00.000Z","dateModified":"2023-02-07T06:25:22.438Z","author":{"@type":"Person","name":"Bofan Zheng"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"1. Gather data from API12import requestsimport pandas as pd Using the amazon price api from rapidapi.com   1url &#x3D; &quot;https:&#x2F;&#x2F;amazon-price1.p.rapidapi.com&#x2F;search&quot; Here, I am querying a bottom b"}</script><link rel="canonical" href="http://example.com/2023/02/05/data-prepare/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,7 +29,7 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/Introduction">Introduction</a><a class="navbar-item" href="/tags/dataprep">DataPrep_EDA</a><a class="navbar-item" href="/tags/clustering">Clustering</a><a class="navbar-item" href="/tags/arm">ARM</a><a class="navbar-item" href="/tags/naivebayes">NaiveBayes</a><a class="navbar-item" href="/tags/dectrees">DecTrees</a><a class="navbar-item" href="/tags/svms">SVMs</a><a class="navbar-item" href="/tags/regression">Regression</a><a class="navbar-item" href="/tags/nn">NN</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/tags/conclusions">Conclusions</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-02-06T04:50:00.000Z" title="2/5/2023, 9:50:00 PM">2023-02-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-02-06T05:33:43.594Z" title="2/5/2023, 10:33:43 PM">2023-02-05</time></span><span class="level-item">2 minutes read (About 371 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Data Prepartion</h1><div class="content"><h2 id="1-Gather-data-from-API"><a href="#1-Gather-data-from-API" class="headerlink" title="1. Gather data from API"></a>1. Gather data from API</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/Introduction">Introduction</a><a class="navbar-item" href="/tags/dataprep">DataPrep_EDA</a><a class="navbar-item" href="/tags/clustering">Clustering</a><a class="navbar-item" href="/tags/arm">ARM</a><a class="navbar-item" href="/tags/naivebayes">NaiveBayes</a><a class="navbar-item" href="/tags/dectrees">DecTrees</a><a class="navbar-item" href="/tags/svms">SVMs</a><a class="navbar-item" href="/tags/regression">Regression</a><a class="navbar-item" href="/tags/nn">NN</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/tags/conclusions">Conclusions</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-02-06T04:50:00.000Z" title="2/5/2023, 9:50:00 PM">2023-02-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-02-07T06:25:22.438Z" title="2/6/2023, 11:25:22 PM">2023-02-06</time></span><span class="level-item">16 minutes read (About 2465 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Data Prepartion</h1><div class="content"><h2 id="1-Gather-data-from-API"><a href="#1-Gather-data-from-API" class="headerlink" title="1. Gather data from API"></a>1. Gather data from API</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
 <p>Using the amazon price api from rapidapi.com  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">&quot;https://amazon-price1.p.rapidapi.com/search&quot;</span></span><br></pre></td></tr></table></figure>
 <p>Here, I am querying a bottom bracket used for replacing on my bicycle</p>
@@ -209,8 +209,1602 @@
 </table>
 </div>
 
+<h2 id="2-Gather-data-from-website"><a href="#2-Gather-data-from-website" class="headerlink" title="2. Gather data from website"></a>2. Gather data from website</h2><h3 id="2-1-download-from-academic-website"><a href="#2-1-download-from-academic-website" class="headerlink" title="2.1 download from academic website"></a>2.1 download from academic website</h3><p>Dr. Ni’s website contains a varitey of amazon products reviews &#x2F; metadata avaialbe for research usage.  </p>
+<p>Download the metadata from electronics category</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -O https://drive.google.com/file/d/1QKGvsVNDfHJORr_3atR69B06UuHFJzK9/view?usp=share_link</span><br></pre></td></tr></table></figure>
 
-</div><div class="article-licensing box"><div class="licensing-title"><p>Data Prepartion</p><p><a href="http://example.com/2023/02/05/data-prepare/">http://example.com/2023/02/05/data-prepare/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Bofan Zheng</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2023-02-05</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-02-05</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/dataprep/">dataprep</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/02/05/product_api/"><i class="level-item fas fa-chevron-left"></i><span class="level-item"> </span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/01/22/hello-world/"><span class="level-item">Hello World</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://raw.githubusercontent.com/BraydenZheng/img/main/uPic/god_garden_2.jpeg" alt="Bofan Zheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bofan Zheng</p><p class="is-size-6 is-block">Backend Software Developer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Boulder, CO</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tag</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-06T05:14:15.177Z">2023-02-05</time></p><p class="title"><a href="/2023/02/05/product_api/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-06T04:50:00.000Z">2023-02-05</time></p><p class="title"><a href="/2023/02/05/data-prepare/">Data Prepartion</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-23T00:27:32.546Z">2023-01-22</time></p><p class="title"><a href="/2023/01/22/hello-world/">Hello World</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">February 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">January 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/dataprep/"><span class="tag">dataprep</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2023 Bofan Zheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+
+
+<h3 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h3><p>Justifying recommendations using distantly-labeled reviews and fined-grained aspects<br>Jianmo Ni, Jiacheng Li, Julian McAuley<br>Empirical Methods in Natural Language Processing (EMNLP), 2019</p>
+<h3 id="2-2-download-from-Kaggle"><a href="#2-2-download-from-Kaggle" class="headerlink" title="2.2 download from Kaggle"></a>2.2 download from Kaggle</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> dataframe_image <span class="keyword">as</span> dfi</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+<p>Loading the data downloaded from kaggle</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&#x27;amazon_fine_food/Reviews.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>ProductId</th>
+      <th>UserId</th>
+      <th>ProfileName</th>
+      <th>HelpfulnessNumerator</th>
+      <th>HelpfulnessDenominator</th>
+      <th>Score</th>
+      <th>Time</th>
+      <th>Summary</th>
+      <th>Text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>B001E4KFG0</td>
+      <td>A3SGXH7AUHU8GW</td>
+      <td>delmartian</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>1303862400</td>
+      <td>Good Quality Dog Food</td>
+      <td>I have bought several of the Vitality canned d...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>B00813GRG4</td>
+      <td>A1D87F6ZCVE5NK</td>
+      <td>dll pa</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1346976000</td>
+      <td>Not as Advertised</td>
+      <td>Product arrived labeled as Jumbo Salted Peanut...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>B000LQOCH0</td>
+      <td>ABXLMWJIXXAIN</td>
+      <td>Natalia Corres "Natalia Corres"</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1219017600</td>
+      <td>"Delight" says it all</td>
+      <td>This is a confection that has been around a fe...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>B000UA0QIQ</td>
+      <td>A395BORC6FGVXV</td>
+      <td>Karl</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1307923200</td>
+      <td>Cough Medicine</td>
+      <td>If you are looking for the secret ingredient i...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>B006K2ZZ7K</td>
+      <td>A1UQRSCLF8GW1T</td>
+      <td>Michael D. Bigham "M. Wassir"</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1350777600</td>
+      <td>Great taffy</td>
+      <td>Great taffy at a great price.  There was a wid...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>B006K2ZZ7K</td>
+      <td>ADT0SRK1MGOEU</td>
+      <td>Twoapennything</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1342051200</td>
+      <td>Nice Taffy</td>
+      <td>I got a wild hair for taffy and ordered this f...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>B006K2ZZ7K</td>
+      <td>A1SP2KVKFXXRU1</td>
+      <td>David C. Sullivan</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1340150400</td>
+      <td>Great!  Just as good as the expensive brands!</td>
+      <td>This saltwater taffy had great flavors and was...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>B006K2ZZ7K</td>
+      <td>A3JRGQVEQN31IQ</td>
+      <td>Pamela G. Williams</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1336003200</td>
+      <td>Wonderful, tasty taffy</td>
+      <td>This taffy is so good.  It is very soft and ch...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>B000E7L2R4</td>
+      <td>A1MZYO9TZK0BBI</td>
+      <td>R. James</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>1322006400</td>
+      <td>Yay Barley</td>
+      <td>Right now I'm mostly just sprouting this so my...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>B00171APVA</td>
+      <td>A21BT40VZCCYT4</td>
+      <td>Carol A. Reed</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1351209600</td>
+      <td>Healthy Dog Food</td>
+      <td>This is a very healthy dog food. Good for thei...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>Export raw data as image</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfi.export(df.head(<span class="number">10</span>), <span class="string">&#x27;img/raw_data.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>objc[3339]: Class WebSwapCGLLayer is implemented in both /System/Library/Frameworks/WebKit.framework/Versions/A/Frameworks/WebCore.framework/Versions/A/Frameworks/libANGLE-shared.dylib (0x7ffb59f48ec8) and /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/109.0.5414.119/Libraries/libGLESv2.dylib (0x112aa2880). One of the two will be used. Which one is undefined.
+[0206/162844.261718:INFO:headless_shell.cc(223)] 161676 bytes written to file /var/folders/0t/vj81lwzn36xcslx3y2f148t40000gn/T/tmprw10mkzc/temp.png
+objc[3366]: Class WebSwapCGLLayer is implemented in both /System/Library/Frameworks/WebKit.framework/Versions/A/Frameworks/WebCore.framework/Versions/A/Frameworks/libANGLE-shared.dylib (0x7ffb59f48ec8) and /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/109.0.5414.119/Libraries/libGLESv2.dylib (0x10dc85880). One of the two will be used. Which one is undefined.
+[0206/162845.145626:INFO:headless_shell.cc(223)] 147537 bytes written to file /var/folders/0t/vj81lwzn36xcslx3y2f148t40000gn/T/tmpuje7jzzv/temp.png
+</code></pre>
+<h2 id="3-Data-cleaning-and-visualize"><a href="#3-Data-cleaning-and-visualize" class="headerlink" title="3. Data cleaning and visualize"></a>3. Data cleaning and visualize</h2><h3 id="3-1-Clean-irrelevant-data-column"><a href="#3-1-Clean-irrelevant-data-column" class="headerlink" title="3.1 Clean irrelevant data column"></a>3.1 Clean irrelevant data column</h3><p><strong>UserId, profileName, Timestamp is not related to product recommendation, so it’s better to remove them off</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.drop(<span class="string">&#x27;UserId&#x27;</span>, axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.drop(<span class="string">&#x27;ProfileName&#x27;</span>, axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.drop(<span class="string">&#x27;Time&#x27;</span>, axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>ProductId</th>
+      <th>HelpfulnessNumerator</th>
+      <th>HelpfulnessDenominator</th>
+      <th>Score</th>
+      <th>Summary</th>
+      <th>Text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>B001E4KFG0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>Good Quality Dog Food</td>
+      <td>I have bought several of the Vitality canned d...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>B00813GRG4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Not as Advertised</td>
+      <td>Product arrived labeled as Jumbo Salted Peanut...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>B000LQOCH0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>"Delight" says it all</td>
+      <td>This is a confection that has been around a fe...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>B000UA0QIQ</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>Cough Medicine</td>
+      <td>If you are looking for the secret ingredient i...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>B006K2ZZ7K</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>Great taffy</td>
+      <td>Great taffy at a great price.  There was a wid...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="3-2-Inspect-Duplicate-Data"><a href="#3-2-Inspect-Duplicate-Data" class="headerlink" title="3.2 Inspect Duplicate Data"></a>3.2 Inspect Duplicate Data</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">productId_c = df.iloc[:,<span class="number">1</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">productId_c</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ProductId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>B001E4KFG0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B00813GRG4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B000LQOCH0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B000UA0QIQ</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B006K2ZZ7K</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>568449</th>
+      <td>B001EO7N10</td>
+    </tr>
+    <tr>
+      <th>568450</th>
+      <td>B003S1WTCU</td>
+    </tr>
+    <tr>
+      <th>568451</th>
+      <td>B004I613EE</td>
+    </tr>
+    <tr>
+      <th>568452</th>
+      <td>B004I613EE</td>
+    </tr>
+    <tr>
+      <th>568453</th>
+      <td>B001LR2CU2</td>
+    </tr>
+  </tbody>
+</table>
+<p>568454 rows × 1 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">productId_c.insert(<span class="number">1</span>, <span class="string">&#x27;count&#x27;</span>,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_f = productId_c.groupby([<span class="string">&#x27;ProductId&#x27;</span>]).transform(<span class="string">&#x27;count&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_f.sort_values(by=[<span class="string">&#x27;count&#x27;</span>], ascending=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>563881</th>
+      <td>913</td>
+    </tr>
+    <tr>
+      <th>563615</th>
+      <td>913</td>
+    </tr>
+    <tr>
+      <th>563629</th>
+      <td>913</td>
+    </tr>
+    <tr>
+      <th>563628</th>
+      <td>913</td>
+    </tr>
+    <tr>
+      <th>563627</th>
+      <td>913</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>366022</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>366033</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>366040</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>366050</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>568453</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>568454 rows × 1 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_f[<span class="string">&#x27;frequency&#x27;</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_f</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>568449</th>
+      <td>6</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>568450</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>568451</th>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>568452</th>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>568453</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>568454 rows × 2 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_a = p_f.groupby([<span class="string">&#x27;count&#x27;</span>]).count()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_a[<span class="string">&#x27;frequency&#x27;</span>] = p_f.groupby([<span class="string">&#x27;count&#x27;</span>]).transform(<span class="string">&#x27;count&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_a.iloc[:,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>count
+1      30408
+2      24524
+3      20547
+4      17296
+5      15525
+       ...  
+564     5076
+567      567
+623      623
+632     2528
+913      913
+Name: frequency, Length: 283, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_a.index</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Int64Index([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,
+            ...
+            491, 506, 530, 542, 556, 564, 567, 623, 632, 913],
+           dtype=&#39;int64&#39;, name=&#39;count&#39;, length=283)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p_a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>frequency</th>
+    </tr>
+    <tr>
+      <th>count</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>30408</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24524</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>20547</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17296</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>15525</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>564</th>
+      <td>5076</td>
+    </tr>
+    <tr>
+      <th>567</th>
+      <td>567</td>
+    </tr>
+    <tr>
+      <th>623</th>
+      <td>623</td>
+    </tr>
+    <tr>
+      <th>632</th>
+      <td>2528</td>
+    </tr>
+    <tr>
+      <th>913</th>
+      <td>913</td>
+    </tr>
+  </tbody>
+</table>
+<p>283 rows × 1 columns</p>
+</div>
+
+
+
+<p>Build an image showing the num of duplcated product existed in data set, it’s tremendous</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Horizontal Bar Plot show duplicated count - num of products</span></span><br><span class="line">plt.bar(p_a.index, p_a.iloc[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;duplicated count&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;num of products&quot;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;duplicated products ditribution&quot;</span>)</span><br><span class="line">plt.savefig(<span class="string">&#x27;img/duplicated_product_distribution.png&#x27;</span>)</span><br><span class="line"><span class="comment"># Show Plot</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2023/02/05/data-prepare/output_28_0.png" alt="png"></p>
+<h2 id="3-3-Merge-Duplicated-Data"><a href="#3-3-Merge-Duplicated-Data" class="headerlink" title="3.3 Merge Duplicated Data"></a>3.3 Merge Duplicated Data</h2><p><strong>The main focus here is merging duplicated data, making each product id unique</strong></p>
+<p><strong>For those product contains multiple scores, counting an average probably be a good choice for it. The drawback is some unique fields also need to be removed (‘Text’, ‘Summary’). Since the score plays a determined factor in recommendation, removing is necessary for certain analysis.</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_avg = df.iloc[:, <span class="number">1</span>:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_avg</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ProductId</th>
+      <th>HelpfulnessNumerator</th>
+      <th>HelpfulnessDenominator</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>B001E4KFG0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B00813GRG4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B000LQOCH0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B000UA0QIQ</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B006K2ZZ7K</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>568449</th>
+      <td>B001EO7N10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>568450</th>
+      <td>B003S1WTCU</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>568451</th>
+      <td>B004I613EE</td>
+      <td>2</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>568452</th>
+      <td>B004I613EE</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>568453</th>
+      <td>B001LR2CU2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+<p>568454 rows × 4 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg = df_avg.groupby([<span class="string">&#x27;ProductId&#x27;</span>]).mean()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg.insert(<span class="number">0</span>, <span class="string">&#x27;ProductId&#x27;</span>, avg.index)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg.index = <span class="built_in">range</span>(<span class="built_in">len</span>(avg.index))</span><br></pre></td></tr></table></figure>
+
+<p><strong>Cleaned Data generated, duplicated value eliminated</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ProductId</th>
+      <th>HelpfulnessNumerator</th>
+      <th>HelpfulnessDenominator</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0006641040</td>
+      <td>3.027027</td>
+      <td>3.378378</td>
+      <td>4.351351</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>141278509X</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2734888454</td>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>3.500000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2841233731</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7310172001</td>
+      <td>0.809249</td>
+      <td>1.219653</td>
+      <td>4.751445</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>74253</th>
+      <td>B009UOFTUI</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>74254</th>
+      <td>B009UOFU20</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>74255</th>
+      <td>B009UUS05I</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>74256</th>
+      <td>B009WSNWC4</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>74257</th>
+      <td>B009WVB40S</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>74258 rows × 4 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg[<span class="string">&#x27;HelpfulRatio&#x27;</span>] = avg[<span class="string">&#x27;HelpfulnessNumerator&#x27;</span>] / avg[<span class="string">&#x27;HelpfulnessDenominator&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Replace NAN value with 0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg[<span class="string">&quot;HelpfulRatio&quot;</span>] = avg[<span class="string">&quot;HelpfulRatio&quot;</span>].replace(np.nan, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ProductId</th>
+      <th>HelpfulnessNumerator</th>
+      <th>HelpfulnessDenominator</th>
+      <th>Score</th>
+      <th>HelpfulRatio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0006641040</td>
+      <td>3.027027</td>
+      <td>3.378378</td>
+      <td>4.351351</td>
+      <td>0.896000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>141278509X</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>5.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2734888454</td>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>3.500000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2841233731</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7310172001</td>
+      <td>0.809249</td>
+      <td>1.219653</td>
+      <td>4.751445</td>
+      <td>0.663507</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>74253</th>
+      <td>B009UOFTUI</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>74254</th>
+      <td>B009UOFU20</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>74255</th>
+      <td>B009UUS05I</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>74256</th>
+      <td>B009WSNWC4</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>74257</th>
+      <td>B009WVB40S</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>74258 rows × 5 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfi.export(avg.head(<span class="number">10</span>), <span class="string">&#x27;img/clean_data.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>objc[5257]: Class WebSwapCGLLayer is implemented in both /System/Library/Frameworks/WebKit.framework/Versions/A/Frameworks/WebCore.framework/Versions/A/Frameworks/libANGLE-shared.dylib (0x7ffb59f48ec8) and /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/109.0.5414.119/Libraries/libGLESv2.dylib (0x111ded880). One of the two will be used. Which one is undefined.
+[0206/204727.828076:INFO:headless_shell.cc(223)] 60469 bytes written to file /var/folders/0t/vj81lwzn36xcslx3y2f148t40000gn/T/tmp9j9u523o/temp.png
+</code></pre>
+<h3 id="3-4-Outlier-detection"><a href="#3-4-Outlier-detection" class="headerlink" title="3.4 Outlier detection"></a>3.4 Outlier detection</h3><p>Part of visualization (outlier) code reference from: <a target="_blank" rel="noopener" href="https://medium.com/swlh/identify-outliers-with-pandas-statsmodels-and-seaborn-2766103bf67c">https://medium.com/swlh/identify-outliers-with-pandas-statsmodels-and-seaborn-2766103bf67c</a></p>
+<p><strong>Method 1: Detect outlier based on Histograms</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax = sns.distplot(avg.Score, hist=<span class="literal">True</span>, hist_kws=&#123;<span class="string">&quot;edgecolor&quot;</span>: <span class="string">&#x27;w&#x27;</span>, <span class="string">&quot;linewidth&quot;</span>: <span class="number">3</span>&#125;, kde_kws=&#123;<span class="string">&quot;linewidth&quot;</span>: <span class="number">3</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/var/folders/0t/vj81lwzn36xcslx3y2f148t40000gn/T/ipykernel_3210/869401958.py:1: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  ax = sns.distplot(avg.Score, hist=True, hist_kws=&#123;&quot;edgecolor&quot;: &#39;w&#39;, &quot;linewidth&quot;: 3&#125;, kde_kws=&#123;&quot;linewidth&quot;: 3&#125;)
+</code></pre>
+<p><img src="/2023/02/05/data-prepare/output_47_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.figure.savefig(<span class="string">&#x27;img/dist_plot.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Method 2: Detect outlier based on Distribution</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax = sns.boxplot(avg.Score)</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2023/02/05/data-prepare/output_50_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.<span class="built_in">set</span>(title=<span class="string">&#x27;Review score box plot&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[Text(0.5, 1.0, &#39;Review score box plot&#39;)]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.figure.savefig(<span class="string">&#x27;img/box_plot_score.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Based on graph results above, score below 2.0 can be possible outlier, however as it’s shown from second graph, the dot is super dense for those “possible outliers”, in this case, no need to remove outlier at this point.</strong></p>
+<h2 id="3-5-Other-visualization"><a href="#3-5-Other-visualization" class="headerlink" title="3.5 Other visualization"></a>3.5 Other visualization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig = sns.relplot(data = avg, x = <span class="string">&#x27;HelpfulnessDenominator&#x27;</span>, y = <span class="string">&#x27;HelpfulnessNumerator&#x27;</span>).<span class="built_in">set</span>(title=<span class="string">&#x27;Helpfulness ration among review&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2023/02/05/data-prepare/output_55_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig.savefig(<span class="string">&#x27;img/relation_plot.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ProductId</th>
+      <th>HelpfulnessNumerator</th>
+      <th>HelpfulnessDenominator</th>
+      <th>Score</th>
+      <th>HelpfulRatio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0006641040</td>
+      <td>3.027027</td>
+      <td>3.378378</td>
+      <td>4.351351</td>
+      <td>0.896000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>141278509X</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>5.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2734888454</td>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>3.500000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2841233731</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7310172001</td>
+      <td>0.809249</td>
+      <td>1.219653</td>
+      <td>4.751445</td>
+      <td>0.663507</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>74253</th>
+      <td>B009UOFTUI</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>74254</th>
+      <td>B009UOFU20</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>74255</th>
+      <td>B009UUS05I</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>74256</th>
+      <td>B009WSNWC4</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>74257</th>
+      <td>B009WVB40S</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>74258 rows × 5 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig = sns.residplot(x=<span class="string">&#x27;HelpfulnessNumerator&#x27;</span>, y=<span class="string">&#x27;HelpfulnessDenominator&#x27;</span>, data=avg, scatter_kws=<span class="built_in">dict</span>(s=<span class="number">50</span>))</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2023/02/05/data-prepare/output_58_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig.figure.savefig(<span class="string">&#x27;img/residual_plot.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax = plt.scatter(x= avg.index, y=avg[<span class="string">&#x27;HelpfulRatio&#x27;</span>], color = <span class="string">&#x27;g&#x27;</span>, s= <span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2023/02/05/data-prepare/output_60_0.png" alt="png"></p>
+<p>Based on distribution graph, majority of Helpful review ratio concentrate between (0.6, 1)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.set_xlabel(<span class="string">&#x27;index&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.set_ylabel(<span class="string">&#x27;ratio&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.title=<span class="string">&#x27;Review score box plot&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.figure.savefig(<span class="string">&#x27;img/Helpful_Ratio_distribution.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>Here comes the graph shows the Helpfulness numberator and Score realtion, generally, most of review get average helpfulness count regardless of score</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.relplot(data = avg, x = <span class="string">&#x27;Score&#x27;</span>, y = <span class="string">&#x27;HelpfulnessNumerator&#x27;</span>, color = <span class="string">&#x27;purple&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f7b6b9c9960&gt;
+</code></pre>
+<p><img src="/2023/02/05/data-prepare/output_68_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg_int = avg</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg_int[<span class="string">&#x27;Score&#x27;</span>] = avg[<span class="string">&#x27;Score&#x27;</span>].astype(<span class="built_in">int</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(data = avg_int, x = <span class="string">&#x27;Score&#x27;</span>, y= <span class="string">&#x27;HelpfulnessNumerator&#x27;</span>, kind = <span class="string">&#x27;bar&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f7ad889e200&gt;
+</code></pre>
+<p><img src="/2023/02/05/data-prepare/output_71_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(data = avg_int, x = <span class="string">&#x27;Score&#x27;</span>, y = <span class="string">&#x27;HelpfulnessDenominator&#x27;</span>, kind = <span class="string">&#x27;box&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f7bbd0bd150&gt;
+</code></pre>
+<p><img src="/2023/02/05/data-prepare/output_72_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(data = avg_int, x = <span class="string">&#x27;Score&#x27;</span>, y = <span class="string">&#x27;HelpfulRatio&#x27;</span>, kind = <span class="string">&#x27;violin&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7f7babee9690&gt;
+</code></pre>
+<p><img src="/2023/02/05/data-prepare/output_73_1.png" alt="png"></p>
+<!-- <img src="/2023/02/05/data-prepare/output_73_1.png" class="">     -->
+
+
+<h2 id="Raw-Data-VS-Clean-Data"><a href="#Raw-Data-VS-Clean-Data" class="headerlink" title="Raw Data VS Clean Data"></a>Raw Data VS Clean Data</h2><p><strong>Raw Data</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>ProductId</th>
+      <th>UserId</th>
+      <th>ProfileName</th>
+      <th>HelpfulnessNumerator</th>
+      <th>HelpfulnessDenominator</th>
+      <th>Score</th>
+      <th>Time</th>
+      <th>Summary</th>
+      <th>Text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>B001E4KFG0</td>
+      <td>A3SGXH7AUHU8GW</td>
+      <td>delmartian</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>1303862400</td>
+      <td>Good Quality Dog Food</td>
+      <td>I have bought several of the Vitality canned d...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>B00813GRG4</td>
+      <td>A1D87F6ZCVE5NK</td>
+      <td>dll pa</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1346976000</td>
+      <td>Not as Advertised</td>
+      <td>Product arrived labeled as Jumbo Salted Peanut...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>B000LQOCH0</td>
+      <td>ABXLMWJIXXAIN</td>
+      <td>Natalia Corres "Natalia Corres"</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1219017600</td>
+      <td>"Delight" says it all</td>
+      <td>This is a confection that has been around a fe...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>B000UA0QIQ</td>
+      <td>A395BORC6FGVXV</td>
+      <td>Karl</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1307923200</td>
+      <td>Cough Medicine</td>
+      <td>If you are looking for the secret ingredient i...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>B006K2ZZ7K</td>
+      <td>A1UQRSCLF8GW1T</td>
+      <td>Michael D. Bigham "M. Wassir"</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1350777600</td>
+      <td>Great taffy</td>
+      <td>Great taffy at a great price.  There was a wid...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>B006K2ZZ7K</td>
+      <td>ADT0SRK1MGOEU</td>
+      <td>Twoapennything</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1342051200</td>
+      <td>Nice Taffy</td>
+      <td>I got a wild hair for taffy and ordered this f...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>B006K2ZZ7K</td>
+      <td>A1SP2KVKFXXRU1</td>
+      <td>David C. Sullivan</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1340150400</td>
+      <td>Great!  Just as good as the expensive brands!</td>
+      <td>This saltwater taffy had great flavors and was...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>B006K2ZZ7K</td>
+      <td>A3JRGQVEQN31IQ</td>
+      <td>Pamela G. Williams</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1336003200</td>
+      <td>Wonderful, tasty taffy</td>
+      <td>This taffy is so good.  It is very soft and ch...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>B000E7L2R4</td>
+      <td>A1MZYO9TZK0BBI</td>
+      <td>R. James</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>1322006400</td>
+      <td>Yay Barley</td>
+      <td>Right now I'm mostly just sprouting this so my...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>B00171APVA</td>
+      <td>A21BT40VZCCYT4</td>
+      <td>Carol A. Reed</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1351209600</td>
+      <td>Healthy Dog Food</td>
+      <td>This is a very healthy dog food. Good for thei...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p><strong>Clean Data (Manily For quantify analysis purpose)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avg.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ProductId</th>
+      <th>HelpfulnessNumerator</th>
+      <th>HelpfulnessDenominator</th>
+      <th>Score</th>
+      <th>HelpfulRatio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0006641040</td>
+      <td>3.027027</td>
+      <td>3.378378</td>
+      <td>4</td>
+      <td>0.896000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>141278509X</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>5</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2734888454</td>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>3</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2841233731</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7310172001</td>
+      <td>0.809249</td>
+      <td>1.219653</td>
+      <td>4</td>
+      <td>0.663507</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7310172101</td>
+      <td>0.809249</td>
+      <td>1.219653</td>
+      <td>4</td>
+      <td>0.663507</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7800648702</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>9376674501</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>B00002N8SM</td>
+      <td>0.473684</td>
+      <td>0.868421</td>
+      <td>1</td>
+      <td>0.545455</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>B00002NCJC</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+</div><div class="article-licensing box"><div class="licensing-title"><p>Data Prepartion</p><p><a href="http://example.com/2023/02/05/data-prepare/">http://example.com/2023/02/05/data-prepare/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Bofan Zheng</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2023-02-05</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-02-06</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/dataprep/">dataprep</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/02/05/product_api/"><i class="level-item fas fa-chevron-left"></i><span class="level-item"> </span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/01/22/hello-world/"><span class="level-item">Hello World</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://raw.githubusercontent.com/BraydenZheng/img/main/uPic/god_garden_2.jpeg" alt="Bofan Zheng"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bofan Zheng</p><p class="is-size-6 is-block">Backend Software Developer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Boulder, CO</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tag</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-07T06:08:10.000Z">2023-02-06</time></p><p class="title"><a href="/2023/02/06/Data_kaggle_clean/Data_kaggle_clean/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-06T05:14:15.177Z">2023-02-05</time></p><p class="title"><a href="/2023/02/05/product_api/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-06T04:50:00.000Z">2023-02-05</time></p><p class="title"><a href="/2023/02/05/data-prepare/">Data Prepartion</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-23T00:27:32.546Z">2023-01-22</time></p><p class="title"><a href="/2023/01/22/hello-world/">Hello World</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">February 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">January 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/dataprep/"><span class="tag">dataprep</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2023 Bofan Zheng</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
